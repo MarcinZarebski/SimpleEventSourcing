@@ -45,6 +45,12 @@
             Raise(new InvoiceItemAddedEvent(Id, price, quantity));
         }
 
+        public void AddItems(List<InvoiceItem> commandInvoiceItems)
+        {
+            EnsureEventsAreRegistered();
+            Raise(new ListOfInvoiceItemsAddedEvent(Id, commandInvoiceItems));
+        }
+
         private void EnsureEventsAreRegistered()
         {
             var events = GetEvents();
@@ -59,6 +65,13 @@
             Register<InvoiceCreatedEvent>(When);
             Register<InvoiceUpdatedEvent>(When);
             Register<InvoiceItemAddedEvent>(When);
+            Register<ListOfInvoiceItemsAddedEvent>(When);
+        }
+
+        private void When(ListOfInvoiceItemsAddedEvent @event)
+        {
+            Id = @event.AggregateRootId;
+            Items = @event.InvoiceItems;
         }
 
         protected void When(InvoiceCreatedEvent @event)

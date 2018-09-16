@@ -1,6 +1,8 @@
 ﻿namespace SimpleEventSourcing.Models
 {
-    public class InvoiceItem
+    using System;
+
+    public class InvoiceItem : AggregateRoot
     {
         public int Quantity { get; set; }
 

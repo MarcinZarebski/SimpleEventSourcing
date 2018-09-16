@@ -11,7 +11,7 @@
 
         public int Price { get; set; }
 
-        AddInvoiceItemCommand(Guid invoiceId, int quantity, int price)
+        public AddInvoiceItemCommand(Guid invoiceId, int quantity, int price)
         {
             InvoiceId = invoiceId;
             Quantity = quantity;

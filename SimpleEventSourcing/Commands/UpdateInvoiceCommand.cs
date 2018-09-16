@@ -9,7 +9,7 @@
         public string CustomerFullName { get; set; }
         public string CustomerAddress { get; set; }
 
-        UpdateInvoiceCommand(string customerFullName, string customerAddress, Guid invoiceId)
+        public UpdateInvoiceCommand(string customerFullName, string customerAddress, Guid invoiceId)
         {
             CustomerFullName = customerFullName;
             CustomerAddress = customerAddress;
